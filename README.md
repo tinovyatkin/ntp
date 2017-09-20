@@ -1,6 +1,6 @@
-# NTPClient [![Build Status](https://travis-ci.org/ffflorian/ntp.js.svg?branch=master)](http://travis-ci.org/ffflorian/ntp.js)
+# NTPClient [![Build Status](https://travis-ci.org/ffflorian/ntpclient.svg?branch=master)](http://travis-ci.org/ffflorian/ntpclient)
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/ffflorian/ntp.js.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/ffflorian/ntpclient.svg)](https://greenkeeper.io/)
 
 Pure TypeScript implementation of the NTP Client Protocol. Based on [node-ntp-client](https://github.com/moonpyk/node-ntp-client).
 

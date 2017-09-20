@@ -1,8 +1,17 @@
 #!/usr/bin/env node
 
-const NTP = require('../dist/commonjs/');
+const { default: NTPClient } = require('../dist/commonjs/');
+const program = require('commander');
+const { description, version } = require('../package.json');
 
-new NTP()
+program
+  .version(version)
+  .description(description)
+  .option('-s, --server <host>', 'Specify a custom NTP server')
+  .option('-p, --port <number>', 'Specify a custom NTP port')
+  .parse(process.argv);
+
+new NTPClient(program.server, program.port)
   .getNetworkTime()
   .then(date => console.log(date))
   .catch(err => console.error(err));
