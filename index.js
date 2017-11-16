@@ -8,7 +8,7 @@ const { createSocket } = require('dgram');
  */
 const {
   NPT_PORT = 123,
-  NTP_SERVER = 'pool.ntp.org',
+  NTP_SERVER = 'time.google.com',
   NTP_REPLY_TIMEOUT = 10 * 1000,
 } = process.env;
 

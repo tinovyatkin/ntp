@@ -2,6 +2,8 @@
 
 Lightweight (no dependencies) modern Javascript (Node 8 LTS or lates) implementation of the NTP Client Protocol. Based on [node-ntp-client](https://github.com/moonpyk/node-ntp-client) and [NTPServer](https://github.com/Grassboy/NTPServer).
 
+We use it in production at <https://transfers.do> for webhooks timestamps checking (like Stripe and so on) where VM time is not reliable enough.
+
 ## Usage
 
 Add the module to your project with `npm install @destinationstransfers/ntp`.
@@ -22,7 +24,7 @@ const { getNetworkTime } = require('@destinationstransfers/ntp)';
 
 const date = await getNetworkTime({
   timeout = 10000, // timeout in ms, default is 10sec
-  server = 'pool.ntp.org', // ntp server address
+  server = 'time.google.com', // ntp server address
   port = 123, // NTP server port
 })
 ```
