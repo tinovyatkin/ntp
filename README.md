@@ -2,7 +2,7 @@
 
 Lightweight (no dependencies) modern Javascript (Node 8 LTS or later) implementation of the NTP Client Protocol. Based on [node-ntp-client](https://github.com/moonpyk/node-ntp-client) and [NTPServer](https://github.com/Grassboy/NTPServer).
 
-We use it in production at <https://transfers.do> for webhooks timestamps checking (like [![Stripe]](https://github.com/stripe)] and so on) where VM time is not reliable enough.
+We use it in production at <https://transfers.do> for webhooks timestamps checking (like [![Stripe](https://github.com/stripe)] and so on) where VM time is not reliable enough.
 
 ## Usage
 
