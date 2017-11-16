@@ -1,4 +1,4 @@
-# NTP Client [![Build Status](https://travis-ci.org/ffflorian/ntpclient.svg)](http://travis-ci.org/ffflorian/ntpclient) [![Greenkeeper badge](https://badges.greenkeeper.io/ffflorian/ntpclient.svg)](https://greenkeeper.io/) [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+# NTP Client [![Build Status](https://travis-ci.org/ffflorian/ntpclient.svg)](http://travis-ci.org/ffflorian/ntpclient) [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 Lightweight (no dependencies) modern Javascript (Node 8 LTS or lates) implementation of the NTP Client Protocol. Based on [node-ntp-client](https://github.com/moonpyk/node-ntp-client).
 
