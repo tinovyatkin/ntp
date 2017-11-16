@@ -1,6 +1,6 @@
 # NTP Client [![CircleCI](https://circleci.com/gh/destinationstransfers/ntp.svg?style=svg)](https://circleci.com/gh/destinationstransfers/ntp) [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-Lightweight (no dependencies) modern Javascript (Node 8 LTS or lates) implementation of the NTP Client Protocol. Based on [node-ntp-client](https://github.com/moonpyk/node-ntp-client) and [NTPServer](https://github.com/Grassboy/NTPServer).
+Lightweight (no dependencies) modern Javascript (Node 8 LTS or later) implementation of the NTP Client Protocol. Based on [node-ntp-client](https://github.com/moonpyk/node-ntp-client) and [NTPServer](https://github.com/Grassboy/NTPServer).
 
 We use it in production at <https://transfers.do> for webhooks timestamps checking (like Stripe and so on) where VM time is not reliable enough.
 
