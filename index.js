@@ -22,9 +22,11 @@ const NPT_MESSAGE_LENGTH = 48;
  * @param {{ntpReplyTimeout: number, server: string, port: number}} opts
  * @returns {Promise<Date>}
  */
-function getNetworkTime(
-  { timeout = NTP_REPLY_TIMEOUT, server = NTP_SERVER, port = NPT_PORT } = {},
-) {
+function getNetworkTime({
+  timeout = NTP_REPLY_TIMEOUT,
+  server = NTP_SERVER,
+  port = NPT_PORT,
+} = {}) {
   return new Promise((resolve, reject) => {
     const client = createSocket('udp4');
     const ntpData = Buffer.alloc(NPT_MESSAGE_LENGTH);
@@ -42,14 +44,14 @@ function getNetworkTime(
     }, timeout);
 
     /*
-      * Some errors can happen before/after send() or cause send() to break.
-      * Some errors will also be given to send()
-      * NOTE: the error rejection is not generalised, as the client has to
-      * lose the connection also, apparently.
-    */
+     * Some errors can happen before/after send() or cause send() to break.
+     * Some errors will also be given to send()
+     * NOTE: the error rejection is not generalised, as the client has to
+     * lose the connection also, apparently.
+     */
     let errorFired = false;
 
-    client.on('error', err => {
+    client.once('error', err => {
       if (errorFired) return;
 
       errorFired = true;
@@ -75,7 +77,7 @@ function getNetworkTime(
           reject(
             new RangeError(
               `Received NTP response from ${server}:${port} is too short: ${
-                msg.length
+              msg.length
               }`,
             ),
           );
@@ -85,7 +87,7 @@ function getNetworkTime(
         // thats inspired by https://github.com/Grassboy/NTPServer/blob/master/timeserver.node.js
         const intpart = msg.readUInt32BE(msg.length - 16);
         const fractpart = msg.readUInt32BE(msg.length - 8);
-        const milliseconds = intpart * 1000 + fractpart * 1000 / 0x100000000;
+        const milliseconds = intpart * 1000 + (fractpart * 1000) / 0x100000000;
 
         // **UTC** time
         const date = new Date('Jan 01 1900 GMT');
