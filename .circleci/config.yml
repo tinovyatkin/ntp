@@ -40,3 +40,4 @@ jobs:
 
       - codecov/upload:
           file: "coverage/coverage-final.json"
+          token: 3f396533-538d-40f8-8507-4df79b80f741
