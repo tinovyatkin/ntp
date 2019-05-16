@@ -1,6 +1,6 @@
 {
   "name": "@destinationstransfers/ntp",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "author": "Tino Vyatkin <tino@vtkn.io>",
   "devDependencies": {
     "@destinationstransfers/eslint-plugin": "^2.4.1",
