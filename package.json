@@ -3,12 +3,14 @@
   "version": "1.2.0",
   "author": "Tino Vyatkin <tino@vtkn.io>",
   "devDependencies": {
-    "@destinationstransfers/eslint-config": "latest",
-    "eslint": "latest",
-    "jest": "latest"
+    "@destinationstransfers/eslint-plugin": "^2.4.1",
+    "@types/jest": "^24.0.13",
+    "@types/node": "^12.0.2",
+    "eslint": "^5.16.0",
+    "jest": "^24.8.0"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=11.13.0"
   },
   "description": "Lightweight Node implementation of the NTP Client Protocol",
   "files": [
@@ -25,20 +27,28 @@
     "url": "https://github.com/destinationstransfers/ntp/issues"
   },
   "scripts": {
-    "test": "jest"
+    "test": "node --expose-gc node_modules/jest/bin/jest --detectOpenHandles --notify --logHeapUsage",
+    "typecheck": "tsc --p jsconfig.json",
+    "lint": "eslint \"**/*.js\" --ignore-path .gitignore"
   },
   "jest": {
     "collectCoverage": true,
     "testEnvironment": "node",
     "verbose": true,
-    "bail": true
+    "bail": true,
+    "coverageReporters": [
+      "text",
+      "json",
+      "html",
+      "cobertura"
+    ]
   },
   "eslintConfig": {
     "plugins": [
-      "node"
+      "@destinationstransfers"
     ],
     "extends": [
-      "@destinationstransfers"
+      "plugin:@destinationstransfers/recommended"
     ],
     "env": {
       "node": true
