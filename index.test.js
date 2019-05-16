@@ -6,26 +6,30 @@ const { getNetworkTime, NTP_REPLY_TIMEOUT } = require('./');
 
 describe('getNetworkTime', () => {
   beforeAll(() => {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = NTP_REPLY_TIMEOUT + 1000;
+    jest.setTimeout(10000);
   });
 
-  test('displays the current time', async () => {
+  it('displays the current time', async () => {
     const res = await getNetworkTime();
     expect(res).toBeInstanceOf(Date);
+    expect(isFinite(res)).toBeTruthy();
   });
 
-  test('works with another NTP server', async () => {
+  it('works with another NTP server', async () => {
     const res = await getNetworkTime({ server: 'de.pool.ntp.org' });
     expect(res).toBeInstanceOf(Date);
+    expect(isFinite(res)).toBeTruthy();
   });
 
-  test("won't work with an invalid NTP server", async () => {
-    await expect(
-      getNetworkTime({ server: 'google.com', timeout: 4000 }),
-    ).rejects.toBeDefined();
+  it("won't work with an invalid NTP server", async () => {
+    try {
+      await getNetworkTime({ server: 'google.com', timeout: 2000 });
+    } catch (err) {
+      expect(err.message).toContain('Timeout');
+    }
   });
 
-  test('should handle server errors', done => {
+  it('should handle server errors', done => {
     // creating a server
     const port = 41234;
     const server = dgram.createSocket('udp4');
@@ -41,7 +45,7 @@ describe('getNetworkTime', () => {
       if (rinfo.address) {
         // time sync request from client
         // simulate broken response
-        server.send(Buffer.alloc(10), 0, 10, rinfo.port, rinfo.address, err => {
+        server.send('byaka', 0, -1, rinfo.port, rinfo.address, err => {
           if (err) throw err;
         });
       }
@@ -51,8 +55,14 @@ describe('getNetworkTime', () => {
       const address = server.address();
       // send request
       await expect(
-        getNetworkTime({ server: address, port }),
-      ).rejects.toBeDefined();
+        getNetworkTime({
+          server: typeof address === 'string' ? address : address.address,
+          port,
+        }),
+      ).rejects.toHaveProperty(
+        'message',
+        expect.stringContaining('is too short: 5'),
+      );
       server.close();
       return done();
     });
