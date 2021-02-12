@@ -76,8 +76,8 @@ async function getNetworkTime({
     );
 
   // thats inspired by https://github.com/Grassboy/NTPServer/blob/master/timeserver.node.js
-  const intpart = msg.readUInt32BE(msg.length - 16);
-  const fractpart = msg.readUInt32BE(msg.length - 8);
+  const intpart = msg.readUInt32BE(msg.length - 8);
+  const fractpart = msg.readUInt32BE(msg.length - 4);
   const milliseconds = intpart * 1000 + (fractpart * 1000) / 0x100000000;
 
   // **UTC** time
