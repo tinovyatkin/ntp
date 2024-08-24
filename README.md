@@ -9,7 +9,7 @@ We use it in production at <https://transfers.do> for webhooks timestamps checki
 Add the module to your project with `npm install @destinationstransfers/ntp`.
 
 ```js
-const NTPClient = require('@destinationstransfers/ntp)';
+const NTPClient = require('@destinationstransfers/ntp');
 
 const date = await NTPClient.getNetworkTime();
 console.log(date) // 2017-09-20T15:29:09.443Z
@@ -20,7 +20,7 @@ console.log(date) // 2017-09-20T15:29:09.443Z
 `getNetworkTime` accepts hash of parameters, below they are with default values:
 
 ```js
-const { getNetworkTime } = require('@destinationstransfers/ntp)';
+const { getNetworkTime } = require('@destinationstransfers/ntp');
 
 const date = await getNetworkTime({
   timeout = 10000, // timeout in ms, default is 10sec
