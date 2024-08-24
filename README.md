@@ -23,9 +23,9 @@ console.log(date) // 2017-09-20T15:29:09.443Z
 const { getNetworkTime } = require('@destinationstransfers/ntp)';
 
 const date = await getNetworkTime({
-  timeout = 10000, // timeout in ms, default is 10sec
-  server = 'time.google.com', // ntp server address
-  port = 123, // NTP server port
+  timeout : 10000, // timeout in ms, default is 10sec
+  server : 'time.google.com', // ntp server address
+  port : 123, // NTP server port
 })
 ```
 
